@@ -14,10 +14,7 @@ exports.signupValidator = [
 ];
 
 exports.loginValidator = [
-  body("email")
-    .isEmail()
-    .withMessage("Please enter a valid email address.")
-    .normalizeEmail(),
+  body("email").isEmail().withMessage("Please enter a valid email address."),
   body("password")
     .isLength({ min: 3 })
     .withMessage("Password is required.")

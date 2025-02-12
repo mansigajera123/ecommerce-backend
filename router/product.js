@@ -44,4 +44,23 @@ router.get("/products", authenticate, productController.getProductsByCategory);
 
 router.post("/payment-intent", productController.createPaymentIntent);
 
+router.post("/place-order", authenticate, productController.placeOrder);
+
+router.get("/my-orders", authenticate, productController.getOrders);
+
+router.delete(
+  "/cart/:productId",
+  authenticate,
+  productController.deleteCartItem
+);
+
+router.get(
+  "/order-invoice/:orderId",
+  authenticate,
+  productController.generatePdf
+);
+
+router.post("/confirm-order", authenticate, productController.confirmPayment);
+
+
 module.exports = router;

@@ -17,8 +17,8 @@ const path = require("path");
 app.use(
   cors({
     origin: [
-      "http://localhost:3001",
-      "https://f74a-2405-201-2009-e7-62da-449-ff63-9291.ngrok-free.app",
+      "http://localhost:3000",
+      "https://2ea3-2405-201-2009-e7-a09c-ce92-1000-91f4.ngrok-free.app",
     ],
     methods: ["POST", "PUT", "GET", "DELETE", "PATCH"],
   })
@@ -34,9 +34,10 @@ app.use("/", userRouter);
 
 app.use(productRouter);
 
+
 mongoose
   .connect(
     "mongodb+srv://mansigajera2512:h8KYuSDiqjeF4YTE@cluster0.gwch9.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0"
   )
-  .then((result) => app.listen(8080))
+  .then((result) => app.listen(2000))
   .catch((err) => console.log(err));

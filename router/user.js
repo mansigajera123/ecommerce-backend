@@ -8,7 +8,6 @@ const authenticate = require("../middleware/auth");
 
 const validator = require("../middleware/validator");
 
-const passport = require("passport");
 router.post("/signup", validator.signupValidator, userConroller.signUp);
 
 router.post(
@@ -44,5 +43,6 @@ router.put("/update-profile", authenticate, userConroller.updateProfilePut);
 
 router.get("/user", authenticate, userConroller.getUserData);
 
+router.get("/get-profile", authenticate, userConroller.getUserProfile);
 
 module.exports = router;

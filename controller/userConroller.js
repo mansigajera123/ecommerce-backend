@@ -94,11 +94,11 @@ exports.forgotPassword = (req, res, next) => {
           service: "gmail",
           auth: {
             user: "mansigajera102@gmail.com",
-            pass: "2512-Mansi",
+            pass: "25x12-Mansi",
           },
         });
 
-        const resetUrl = `https://8b09-2405-201-2009-e7-e3e8-323-fbe4-261e.ngrok-free.app/reset-password/${resetToken}`;
+        const resetUrl = `https://1854-2405-201-2009-e7-d85c-ebd1-2cfe-7ff5.ngrok-free.app/reset-password/${resetToken}`;
 
         transporter
           .sendMail({
@@ -145,7 +145,6 @@ exports.resetPassword = (req, res, next) => {
       });
     })
     .catch((err) => {
-      console.log(err);
       res
         .status(500)
         .json({ message: "An error occurred while resetting password" });
@@ -185,7 +184,6 @@ exports.toggleFavorite = async (req, res) => {
 
     res.json({ message: "Favorite status updated", isFavorite: !isFavorite });
   } catch (error) {
-    console.error("Error toggling favorite:", error);
     res.status(500).json({ message: "Something went wrong!" });
   }
 };
@@ -201,7 +199,6 @@ exports.getFavourite = async (req, res) => {
 
     res.json({ favorites: user.favorites });
   } catch (error) {
-    console.error("Error fetching favorites:", error);
     res.status(500).json({ message: "Something went wrong!" });
   }
 };
@@ -228,7 +225,6 @@ exports.removeFavorite = async (req, res) => {
     await user.save();
     res.status(200).json({ message: "Product removed from favorites" });
   } catch (error) {
-    console.error("Error removing product from favorites:", error);
     res.status(500).json({ message: "Server error" });
   }
 };
@@ -251,7 +247,6 @@ exports.updateProfilePut = async (req, res) => {
     await user.save();
     res.status(200).json({ message: "Profile updated successfully" });
   } catch (error) {
-    console.error("Error updating profile:", error);
     res.status(500).json({ message: "Error updating profile" });
   }
 };
@@ -261,4 +256,16 @@ exports.getUserData = (req, res, next) => {
   User.findOne({ _id: userId })
     .then((user) => res.json(user))
     .catch((err) => console.log(err));
+};
+
+exports.getUserProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.userId).select("-password");
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
 };

@@ -29,6 +29,7 @@ const productSchema = new Schema({
       userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
+        required: true,
       },
       rating: {
         type: Number,
@@ -36,6 +37,7 @@ const productSchema = new Schema({
         min: 1,
         max: 5,
       },
+
       reviewText: {
         type: String,
         required: true,
@@ -46,11 +48,14 @@ const productSchema = new Schema({
       },
     },
   ],
+  avgRating: {
+    type: Number,
+    default: 0,
+  },
   category: {
     type: String,
     required: true,
   },
- 
 });
 
 module.exports = mongoose.model("Product", productSchema);
