@@ -19,6 +19,7 @@ app.use(
     origin: [
       "http://localhost:3000",
       "https://2ea3-2405-201-2009-e7-a09c-ce92-1000-91f4.ngrok-free.app",
+      "https://e-commerce-vby2.vercel.app",
     ],
     methods: ["POST", "PUT", "GET", "DELETE", "PATCH"],
   })
@@ -33,7 +34,6 @@ app.use(express.json());
 app.use("/", userRouter);
 
 app.use(productRouter);
-
 
 mongoose
   .connect(

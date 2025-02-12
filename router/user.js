@@ -8,6 +8,8 @@ const authenticate = require("../middleware/auth");
 
 const validator = require("../middleware/validator");
 
+const upload = require("../middleware/upload");
+
 router.post("/signup", validator.signupValidator, userConroller.signUp);
 
 router.post(
