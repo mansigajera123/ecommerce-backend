@@ -19,7 +19,7 @@ app.use(
     origin: [
       "http://localhost:3000",
       "https://dd9c-2405-201-2009-e7-eb12-86fa-fd9e-22cc.ngrok-free.app",
-      "https://e-commerce-vby2-git-master-mansigajera123s-projects.vercel.app/",
+      "https://e-commerce-vby2-git-master-mansigajera123s-projects.vercel.app",
     ],
     methods: ["POST", "PUT", "GET", "DELETE", "PATCH"],
   })
