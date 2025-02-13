@@ -1,15 +1,5 @@
 const User = require("../model/user");
 
-const bcrypt = require("bcryptjs");
-
-const jwt = require("jsonwebtoken");
-
-const crypto = require("crypto");
-
-const nodemailer = require("nodemailer");
-
-const { validationResult } = require("express-validator");
-
 const Product = require("../model/product");
 
 exports.toggleFavorite = async (req, res) => {

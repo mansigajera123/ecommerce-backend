@@ -10,8 +10,6 @@ const nodemailer = require("nodemailer");
 
 const { validationResult } = require("express-validator");
 
-const Product = require("../model/product");
-
 exports.signUp = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -150,8 +148,6 @@ exports.resetPassword = (req, res, next) => {
         .json({ message: "An error occurred while resetting password" });
     });
 };
-
-
 
 exports.updateProfilePut = async (req, res) => {
   const userId = req.user.userId;
