@@ -62,5 +62,10 @@ router.get(
 
 router.post("/confirm-order", authenticate, productController.confirmPayment);
 
+router.get(
+  "/order-detail/:id",
+  authenticate,
+  productController.getOrderDetails
+);
 
 module.exports = router;

@@ -18,7 +18,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://2ea3-2405-201-2009-e7-a09c-ce92-1000-91f4.ngrok-free.app",
+      "https://dd9c-2405-201-2009-e7-eb12-86fa-fd9e-22cc.ngrok-free.app",
       "https://e-commerce-vby2.vercel.app",
     ],
     methods: ["POST", "PUT", "GET", "DELETE", "PATCH"],

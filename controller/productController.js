@@ -127,7 +127,10 @@ exports.getAllProduct = (req, res, next) => {
   const sortBy = req.query.sortBy || "none";
 
   let query = {
-    title: { $regex: searchQuery, $options: "i" },
+    $or: [
+      { title: { $regex: searchQuery, $options: "i" } },
+      { description: { $regex: searchQuery, $options: "i" } },
+    ],
     price: { $gte: minPrice, $lte: maxPrice },
   };
 
@@ -414,4 +417,11 @@ exports.confirmPayment = async (req, res, next) => {
       .status(500)
       .json({ message: "Server error conforming payment", error });
   }
+};
+
+exports.getOrderDetails = (req, res, next) => {
+  const orderId = req.params.id;
+  Order.findById(orderId).then((order) => {
+    res.json(order);
+  });
 };
