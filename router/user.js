@@ -10,6 +10,8 @@ const validator = require("../middleware/validator");
 
 const upload = require("../middleware/upload");
 
+const favouriteController = require("../controller/favouriteController");
+
 router.post("/signup", validator.signupValidator, userConroller.signUp);
 
 router.post(
@@ -30,15 +32,15 @@ router.post("/reset-password/:token", userConroller.resetPassword);
 router.patch(
   "/toggle-favorite/:id",
   authenticate,
-  userConroller.toggleFavorite
+  favouriteController.toggleFavorite
 );
 
-router.get("/favorites", authenticate, userConroller.getFavourite);
+router.get("/favorites", authenticate, favouriteController.getFavourite);
 
 router.delete(
   "/favorites/:productId",
   authenticate,
-  userConroller.removeFavorite
+  favouriteController.removeFavorite
 );
 
 router.put("/update-profile", authenticate, userConroller.updateProfilePut);
@@ -46,5 +48,12 @@ router.put("/update-profile", authenticate, userConroller.updateProfilePut);
 router.get("/user", authenticate, userConroller.getUserData);
 
 router.get("/get-profile", authenticate, userConroller.getUserProfile);
+
+router.put(
+  "/upload-profile-picture",
+  authenticate,
+  upload.single("profilePicture"),
+  userConroller.uploadPicture
+);
 
 module.exports = router;
